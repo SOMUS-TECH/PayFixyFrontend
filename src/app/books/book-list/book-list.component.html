@@ -1,0 +1,22 @@
+<div class="search-bar">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Search books..." />
+  <button (click)="searchBooks()">Search</button>
+</div>
+
+<div class="grid-container">
+  <div class="book-card" *ngFor="let book of books">
+    <img [src]="book.cover_image || 'assets/placeholder.jpg'" alt="Cover" (error)="onImgError($event)" />
+    <h3>{{ book.title }}</h3>
+    <p>{{ book.authors }}</p>
+     
+    <a [routerLink]="['/books', book.id]">Details</a>
+    <button *ngIf="isLoggedIn() && isReader()" (click)="checkout(book.id)">Check Out</button>
+
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <p>Loading books...</p>
+</div>
+
+

@@ -1,0 +1,51 @@
+.checked-out-container {
+  padding: 20px;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 12px;
+
+      h4 {
+        margin: 0 0 8px;
+      }
+
+      p {
+        margin: 4px 0;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        background-color: #eee;
+        border-radius: 4px;
+
+        &.overdue {
+          background-color: #f44336;
+          color: white;
+        }
+      }
+    }
+  }
+}

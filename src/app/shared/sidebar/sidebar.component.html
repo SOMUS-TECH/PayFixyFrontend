@@ -1,0 +1,16 @@
+<nav class="sidebar-nav">
+  <ul>
+    <li><a routerLink="/books">Browse Books</a></li>
+
+    <li *ngIf="isReader"><a routerLink="/my-checked-out">My Checkouts</a></li>
+    <li *ngIf="isLibrarian"><a routerLink="/book">Add Book</a></li>
+    <li *ngIf="isLibrarian"><a routerLink="/checked-out">Checked Out Books</a></li>
+
+    <li *ngIf="isLoggedIn; else loginLink"><a (click)="logout()">Logout</a></li>
+    <ng-template #loginLink>
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ng-template>
+    
+  </ul>
+</nav>

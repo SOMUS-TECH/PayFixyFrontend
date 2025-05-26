@@ -1,0 +1,26 @@
+<div class="checked-out-container">
+  <h2>Checked Out Books</h2>
+
+  <div *ngIf="loading" class="text-center my-4">
+    <p>Loading checked out books...</p>
+  </div>
+
+  <div class="card-grid" *ngIf="!loading && checkedOutBooks.length">
+    <div class="card" *ngFor="let book of checkedOutBooks">
+      <img [src]="book.coverImage" alt="{{ book.title }}" />
+      <div class="card-body">
+        <h4>{{ book.title }}</h4>
+        <p><strong>Reader:</strong> {{ book.checkouts[0]?.user?.firstName }} {{ book.checkouts[0]?.user?.lastName }}</p>
+        <p><strong>Checkout Date:</strong> {{ book.checkouts[0]?.checkoutDate | date }}</p>
+        <p><strong>Expected Check-in:</strong> {{ book.checkouts[0]?.expectedCheckinDate | date }}</p>
+        <p class="badge" [ngClass]="{ 'overdue': daysRemaining(book.checkouts[0]?.expectedCheckinDate).includes('overdue') }">
+          {{ daysRemaining(book.checkouts[0]?.expectedCheckinDate) }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && checkedOutBooks.length === 0" class="text-muted">
+    <p>No books are currently checked out.</p>
+  </div>
+</div>

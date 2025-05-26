@@ -1,0 +1,8 @@
+<h2>My Checked Out Books</h2>
+<div *ngIf="checkouts.length === 0">You have no active checkouts.</div>
+
+<div *ngFor="let c of checkouts" class="checkout-card">
+  <h4>{{ c.book.title }}</h4>
+  <p><strong>Due:</strong> {{ c.expectedCheckinDate | date }}</p>
+  <button (click)="checkin(c.book.id)">Return Book</button>
+</div>
